@@ -7,9 +7,9 @@ function love.load()
 
 	x = 5
 	y = 5
-
-	viewW = 800
-	viewH= 600
+	r = 0
+	viewW = 1600
+	viewH= 1200
 
 	love.window.setMode(viewW,viewH,{resizable=false, vsync=false})
 	love.window.setTitle('Sal Video Game')
@@ -35,29 +35,37 @@ end
 function love.draw()
 	-- main loop 	
 
-	love.graphics.draw(riley, x, y)
+	love.graphics.draw(riley, x, y, r, 2, 2)
 
 end
 
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function love.update(dt)
-	print(dt)
-	x = x+10 * dt
-	y = y+10 * dt
+	--print(dt)
+	--x = x+10 * dt
+	--y = y+10 * dt
+
+
+	if love.keyboard.isDown("up") then   --up
+		y = y - 2
+	elseif love.keyboard.isDown("down") then --down
+		y = y + 2
+	elseif love.keyboard.isDown("left") then -- left
+		x = x - 2
+	elseif love.keyboard.isDown("right") then -- right
+		x = x + 2	
+	end	
+
 
 end
 
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function love.keypressed(k)
-	if k == "j" then   --up
-		y = y - 20
-	elseif k == "k" then --down
-		y = y + 20
-	elseif k == "h" then -- left
-		x = x - 20
-	elseif k == "l" then -- right
-		x = x + 20
+	if k == "r" then   --rotate
+		r = r + 1
+	elseif k == 'e' then
+	    r = 0
 	end	
 end
 
