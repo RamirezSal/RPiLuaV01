@@ -5,6 +5,9 @@ io.stdout:setvbuf("no")
 function love.load()
 -- loads once at launch
 
+	x = 5
+	y = 5
+
 	viewW = 800
 	viewH= 600
 
@@ -19,14 +22,65 @@ function love.load()
 	computer = math.random(1,20)
 	player = math.random(1,20)
 
+
+	--riley = love.graphics.newImage("D:\\Dropbox\\DevProj\\RpiLuaV01\\img\\Rileyv02-0001.png")
+	riley = love.graphics.newImage("/img/Rileyv02-0001.png")
+	--love.graphics.draw(riley, 50, 50)
+
 end
 
 
 
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function love.draw()
--- main loop 
+	-- main loop 	
+
+	love.graphics.draw(riley, x, y)
+
+end
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function love.update(dt)
+	print(dt)
+	x = x+10 * dt
+	y = y+10 * dt
+
+end
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function love.keypressed(k)
+	if k == "j" then   --up
+		y = y - 20
+	elseif k == "k" then --down
+		y = y + 20
+	elseif k == "h" then -- left
+		x = x - 20
+	elseif k == "l" then -- right
+		x = x + 20
+	end	
+end
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function rileyMoveFixed()
+	for i=1, 5 do
+		x = x + 100
+		y = y + 100
+		love.graphics.draw(riley, x, y)
+	end
+end
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function doStuff()
     
+	love.graphics.draw(riley, 50, 50)
 
 	if player > computer then
 		love.graphics.printf("Player wins!", 0,
