@@ -1,5 +1,6 @@
 io.stdout:setvbuf("no")
 
+-- updating more stuf.
 
 
 function love.load()
@@ -12,7 +13,7 @@ function love.load()
 	viewH= 1200
 
 	love.window.setMode(viewW,viewH,{resizable=false, vsync=false})
-	love.window.setTitle('Sal Video Game')
+	love.window.setTitle('Sal Video Game - Pixel Art')
 	love.graphics.setBackgroundColor(0,0,0)
 
 
